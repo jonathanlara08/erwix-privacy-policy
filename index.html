@@ -5,233 +5,757 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Privacidad - ERWIX</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
+        /* ========== RESET Y ESTILOS BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        h1, h2, h3 {
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1a2332;
+            line-height: 1.7;
+            padding: 0;
+        }
+
+        /* ========== CONTENEDOR PRINCIPAL ========== */
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 40px 24px 60px;
+        }
+
+        /* ========== HEADER CON GRADIENTE ========== */
+        .header {
+            background: linear-gradient(135deg, #1A237E 0%, #283593 40%, #3F51B5 100%);
+            padding: 48px 32px 40px;
+            border-radius: 20px 20px 0 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 800;
+            backdrop-filter: blur(4px);
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            font-size: 16px;
+            opacity: 0.85;
+            margin-top: 4px;
+            font-weight: 300;
+        }
+
+        .header .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .header .meta-info span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header .meta-info .badge {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* ========== CUERPO DEL DOCUMENTO ========== */
+        .content {
+            background: white;
+            padding: 40px 48px;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        /* ========== TIPOGRAFÍA ========== */
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1A237E;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3F51B5;
+            display: inline-block;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #283593;
+            margin-top: 28px;
+            margin-bottom: 12px;
+        }
+
+        h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1A237E;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: #37474f;
+        }
+
+        /* ========== LISTAS ========== */
+        ul, ol {
+            padding-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        ul li, ol li {
+            margin-bottom: 8px;
+            color: #37474f;
+        }
+
+        ul ul {
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        /* ========== TABLAS DE DATOS ========== */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 24px;
+            font-size: 14px;
+        }
+
+        .data-table th {
+            background: #f0f2f5;
+            text-align: left;
+            padding: 12px 16px;
+            font-weight: 600;
+            color: #1A237E;
+            border-bottom: 2px solid #3F51B5;
+        }
+
+        .data-table td {
+            padding: 10px 16px;
+            border-bottom: 1px solid #e8ecf1;
+        }
+
+        .data-table tr:hover td {
+            background: #f8f9fb;
+        }
+
+        /* ========== TARJETAS DE SERVICIOS ========== */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 16px 0 24px;
+        }
+
+        .service-tag {
+            background: #f0f4ff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #1A237E;
+            border-left: 3px solid #3F51B5;
+            font-weight: 500;
+        }
+
+        /* ========== CAJAS DE DESTAQUE ========== */
+        .highlight-box {
+            background: #f8faff;
+            border-left: 4px solid #3F51B5;
+            padding: 16px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .highlight-box.warning {
+            border-left-color: #f57c00;
+            background: #fff8f0;
+        }
+
+        .highlight-box.success {
+            border-left-color: #2e7d32;
+            background: #f0f8f0;
+        }
+
+        .highlight-box.danger {
+            border-left-color: #c62828;
+            background: #fff5f5;
+        }
+
+        .highlight-box strong {
             color: #1A237E;
         }
-        h1 {
-            border-bottom: 2px solid #3F51B5;
-            padding-bottom: 10px;
+
+        /* ========== BADGES / CHIPS ========== */
+        .chip {
+            display: inline-block;
+            background: #e8ecf1;
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #37474f;
+            margin: 2px 4px 2px 0;
         }
-        .last-updated {
-            color: #666;
-            font-style: italic;
+
+        .chip.primary {
+            background: #3F51B5;
+            color: white;
         }
-        ul {
-            padding-left: 20px;
+
+        .chip.green {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .chip.orange {
+            background: #f57c00;
+            color: white;
+        }
+
+        .chip.red {
+            background: #c62828;
+            color: white;
+        }
+
+        /* ========== SECCIÓN DE CONTACTO ========== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        .contact-item {
+            background: #f8faff;
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #e8ecf1;
+        }
+
+        .contact-item .icon {
+            font-size: 24px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .contact-item .label {
+            font-size: 12px;
+            color: #78909c;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-item .value {
+            font-weight: 600;
+            color: #1A237E;
+            font-size: 14px;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            text-align: center;
+            padding: 32px 0 12px;
+            border-top: 1px solid #e8ecf1;
+            margin-top: 32px;
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: #90a4ae;
+            margin-bottom: 4px;
+        }
+
+        .footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .footer .footer-links a {
+            color: #3F51B5;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px 12px 40px;
+            }
+
+            .header {
+                padding: 32px 20px 28px;
+                border-radius: 16px 16px 0 0;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .header .meta-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .content {
+                padding: 24px 20px;
+                border-radius: 0 0 16px 16px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            h3 {
+                font-size: 17px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .data-table {
+                font-size: 13px;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 8px 12px;
+            }
+
+            .logo-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 20px 16px;
+            }
+
+            ul, ol {
+                padding-left: 18px;
+            }
+        }
+
+        /* ========== ANIMACIONES ========== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* ========== IMPRESIÓN ========== */
+        @media print {
+            body {
+                background: white;
+            }
+            .header {
+                background: #1A237E !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .content {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            .service-tag {
+                background: #f0f4ff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .highlight-box {
+                background: #f8faff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Política de Privacidad de ERWIX</h1>
-    <p class="last-updated"><strong>Última actualización: 29 de julio de 2026</strong></p>
-    1. INTRODUCCIÓN
-ERWIX ("nosotros", "nuestro" o "la aplicación") respeta su privacidad y se compromete a proteger la información personal que usted nos proporciona. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y protegemos su información cuando utiliza nuestra aplicación móvil y servicios.
 
-Al utilizar ERWIX, usted acepta las prácticas descritas en esta política. Si no está de acuerdo con esta política, por favor no utilice nuestra aplicación.
+    <div class="container">
+
+        <!-- ============================================================ -->
+        <!-- HEADER -->
+        <!-- ============================================================ -->
+        <div class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">E</div>
+                    <div>
+                        <h1>Política de Privacidad</h1>
+                        <div class="subtitle">ERWIX — Comunidades inteligentes</div>
+                    </div>
+                </div>
+
+                <div class="meta-info">
+                    <span>📅 <strong>Vigencia:</strong> 29 de julio de 2026</span>
+                    <span>🌐 <strong>Sitio web:</strong> <a href="https://erwix.com" style="color: white; opacity: 0.9;">erwix.com</a></span>
+                    <span class="badge">📱 App móvil</span>
+                    <span class="badge">🔒 Cumple RGPD / CCPA / CalOPPA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- CONTENIDO -->
+        <!-- ============================================================ -->
+        <div class="content">
+
+            <!-- 1. INTRODUCCIÓN -->
+            <h2>1. Introducción</h2>
+            <p>
+                En <strong>ERWIX</strong> ("nosotros", "nuestro" o "la aplicación"), valoramos y respetamos su privacidad. 
+                Esta Política de Privacidad explica cómo recopilamos, utilizamos, divulgamos y protegemos su información 
+                personal cuando utiliza nuestra aplicación móvil, sitio web y servicios asociados.
+            </p>
+            <p>
+                Al utilizar ERWIX, usted acepta las prácticas descritas en esta política. Si no está de acuerdo con 
+                esta política, por favor no utilice nuestra aplicación.
+            </p>
+
+            <div class="highlight-box">
+                <strong>📌 Datos de contacto:</strong>
+                info@erwix.com · +52 56 4344 4518 · <a href="https://erwix.com">erwix.com</a>
+            </div>
+
+            <!-- 2. INFORMACIÓN QUE RECOPILAMOS -->
+            <h2>2. Información que recopilamos</h2>
+
+            <h3>2.1 Información que usted nos proporciona directamente</h3>
+            <p>Cuando utiliza ERWIX, podemos recopilar la siguiente información personal:</p>
+            <ul>
+                <li><strong>Nombre completo y nombre de usuario</strong></li>
+                <li><strong>Dirección de correo electrónico</strong></li>
+                <li><strong>Número de teléfono</strong></li>
+                <li><strong>Dirección postal</strong> (para facturación)</li>
+                <li><strong>Dirección de facturación</strong></li>
+                <li><strong>Números de tarjeta de débito/crédito</strong> (procesados de forma segura a través de Stripe)</li>
+            </ul>
+
+            <h3>2.2 Información recopilada automáticamente</h3>
+            <p>Cuando utiliza nuestra aplicación, podemos recopilar automáticamente:</p>
+            <ul>
+                <li><strong>Datos de uso:</strong> Cómo interactúa con la aplicación, funciones que utiliza, tiempo de uso.</li>
+                <li><strong>Datos del dispositivo:</strong> Modelo de dispositivo, sistema operativo, identificadores únicos.</li>
+                <li><strong>Datos de ubicación:</strong> Información de ubicación aproximada para servicios basados en ubicación.</li>
+                <li><strong>Datos de rendimiento:</strong> Información sobre fallos y rendimiento de la aplicación.</li>
+            </ul>
+
+            <h3>2.3 Proveedores de servicios</h3>
+            <p>Utilizamos los siguientes servicios de terceros que pueden procesar sus datos:</p>
+
+            <div class="service-grid">
+                <span class="service-tag">🔥 Firebase Authentication</span>
+                <span class="service-tag">📦 Firebase Firestore</span>
+                <span class="service-tag">☁️ Firebase Cloud Functions</span>
+                <span class="service-tag">💾 Firebase Cloud Storage</span>
+                <span class="service-tag">📨 Firebase Cloud Messaging</span>
+                <span class="service-tag">📊 Firebase Crashlytics</span>
+                <span class="service-tag">🛡️ Firebase App Check</span>
+                <span class="service-tag">💳 Stripe (Pagos)</span>
+            </div>
+
+            <!-- 3. CÓMO UTILIZAMOS SU INFORMACIÓN -->
+            <h2>3. Cómo utilizamos su información</h2>
+
+            <h3>3.1 Propósitos principales</h3>
+            <ul>
+                <li><strong>Autenticación y seguridad:</strong> Verificar su identidad y garantizar la seguridad de su cuenta.</li>
+                <li><strong>Gestión de comunidades:</strong> Administrar su participación en colonias y comunidades.</li>
+                <li><strong>Reservaciones:</strong> Procesar reservaciones de amenidades y espacios.</li>
+                <li><strong>Pagos:</strong> Procesar pagos y generar recibos a través de Stripe.</li>
+                <li><strong>Notificaciones:</strong> Enviar alertas y recordatorios importantes.</li>
+                <li><strong>Comunicación:</strong> Responder a sus consultas y proporcionar soporte.</li>
+            </ul>
+
+            <h3>3.2 Mejora de la aplicación</h3>
+            <ul>
+                <li><strong>Análisis:</strong> Utilizar datos de uso para mejorar la experiencia del usuario.</li>
+                <li><strong>Solución de problemas:</strong> Identificar y corregir errores técnicos.</li>
+                <li><strong>Personalización:</strong> Adaptar el contenido y las funcionalidades a sus preferencias.</li>
+            </ul>
+
+            <!-- 4. TECNOLOGÍAS DE SEGUIMIENTO -->
+            <h2>4. Tecnologías de seguimiento</h2>
+            <p>Utilizamos las siguientes tecnologías para mejorar su experiencia:</p>
+            <ul>
+                <li><strong>Cookies:</strong> Pequeños archivos de texto almacenados en su dispositivo para recordar sus preferencias.</li>
+                <li><strong>Web beacons:</strong> Imágenes invisibles que nos ayudan a entender cómo interactúa con la aplicación.</li>
+                <li><strong>Almacenamiento local:</strong> Datos guardados en su dispositivo para un rendimiento más rápido.</li>
+                <li><strong>Sesiones:</strong> Gestión de su estado de inicio de sesión durante el uso de la aplicación.</li>
+            </ul>
+
+            <!-- 5. PUBLICIDAD Y RETARGETING -->
+            <h2>5. Publicidad y retargeting</h2>
+            <p>ERWIX puede mostrar anuncios y utilizar técnicas de retargeting para:</p>
+            <ul>
+                <li>Mostrar anuncios relevantes basados en sus intereses.</li>
+                <li>Medir la efectividad de nuestras campañas publicitarias.</li>
+                <li>Limitar la frecuencia de visualización de anuncios.</li>
+            </ul>
+            <div class="highlight-box warning">
+                <strong>⚠️ Nota:</strong> ERWIX <strong>no</strong> utiliza píxel de Facebook en su aplicación.
+            </div>
+
+            <!-- 6. ACCESO A PERMISOS -->
+            <h2>6. Acceso a permisos del dispositivo</h2>
+            <p>Para proporcionar todas sus funcionalidades, ERWIX puede solicitar acceso a:</p>
+            <ul>
+                <li><strong>Cámara:</strong> Para escaneo de códigos QR y subir fotos de perfil.</li>
+                <li><strong>Galería/Fotos:</strong> Para seleccionar imágenes de perfil y documentos.</li>
+                <li><strong>Contactos:</strong> Para facilitar la comunicación con otros usuarios (opcional).</li>
+            </ul>
+            <p>Puede revocar estos permisos en cualquier momento desde la configuración de su dispositivo.</p>
+
+            <!-- 7. USUARIOS MENORES -->
+            <h2>7. Usuarios menores de 13 años</h2>
+            <p>
+                ERWIX está disponible para usuarios menores de 13 años bajo la supervisión de un padre o tutor. 
+                No recopilamos intencionalmente información personal de niños sin el consentimiento verificable de los padres. 
+                Si descubrimos que hemos recopilado información de un niño sin consentimiento, eliminaremos esa información de inmediato.
+            </p>
+
+            <!-- 8. COMPARTIR INFORMACIÓN -->
+            <h2>8. Cómo compartimos su información</h2>
+            <p>No vendemos, alquilamos ni compartimos su información personal con terceros, excepto en los siguientes casos:</p>
+
+            <h3>8.1 Proveedores de servicios</h3>
+            <p>Compartimos datos con proveedores de servicios de confianza:</p>
+            <ul>
+                <li><strong>Stripe:</strong> Para procesar pagos de forma segura.</li>
+                <li><strong>Firebase/Google:</strong> Para servicios de infraestructura y análisis.</li>
+            </ul>
+
+            <h3>8.2 Requisitos legales</h3>
+            <p>Podemos divulgar su información si:</p>
+            <ul>
+                <li>La ley lo exige.</li>
+                <li>Es necesario para proteger nuestros derechos legales.</li>
+                <li>Es necesario para prevenir fraudes o actividades ilegales.</li>
+            </ul>
+
+            <!-- 9. SEGURIDAD -->
+            <h2>9. Seguridad de datos</h2>
+            <p>Implementamos medidas de seguridad técnicas y organizativas:</p>
+            <ul>
+                <li><strong>Cifrado:</strong> Todos los datos se transmiten mediante HTTPS.</li>
+                <li><strong>Almacenamiento seguro:</strong> Datos en servidores seguros con acceso restringido.</li>
+                <li><strong>Autenticación:</strong> Verificación de identidad para acceder a la información.</li>
+                <li><strong>Monitoreo:</strong> Supervisión continua de amenazas de seguridad.</li>
+            </ul>
+
+            <!-- 10. RETENCIÓN -->
+            <h2>10. Retención de datos</h2>
+            <p>
+                Conservamos su información personal durante el tiempo necesario para proporcionar los servicios solicitados, 
+                cumplir con obligaciones legales y fiscales, y resolver disputas.
+            </p>
+            <p>
+                Si desea eliminar su cuenta y sus datos, puede solicitarlo a través de la aplicación o contactándonos.
+            </p>
+
+            <!-- 11. DERECHOS DE PRIVACIDAD -->
+            <h2>11. Sus derechos de privacidad</h2>
+
+            <h3>11.1 Derechos según el RGPD (Usuarios en la UE)</h3>
+            <ul>
+                <li><strong>Acceso:</strong> Solicitar una copia de sus datos personales.</li>
+                <li><strong>Rectificación:</strong> Corregir datos inexactos.</li>
+                <li><strong>Eliminación:</strong> Solicitar la eliminación de sus datos ("derecho al olvido").</li>
+                <li><strong>Restricción:</strong> Limitar el procesamiento de sus datos.</li>
+                <li><strong>Portabilidad:</strong> Recibir sus datos en un formato portátil.</li>
+                <li><strong>Oposición:</strong> Oponerse al procesamiento de sus datos.</li>
+                <li><strong>Retirar consentimiento:</strong> Retirar su consentimiento en cualquier momento.</li>
+            </ul>
+
+            <h3>11.2 Derechos según la CCPA (Usuarios en California)</h3>
+            <ul>
+                <li><strong>Conocer:</strong> Solicitar información sobre los datos recopilados.</li>
+                <li><strong>Eliminar:</strong> Solicitar la eliminación de sus datos personales.</li>
+                <li><strong>No discriminación:</strong> No ser discriminados por ejercer sus derechos.</li>
+            </ul>
+
+            <h3>11.3 Derechos según CalOPPA</h3>
+            <ul>
+                <li>Indicar claramente qué información recopilamos.</li>
+                <li>Proporcionar información de contacto.</li>
+                <li>Responder a solicitudes de privacidad de manera oportuna.</li>
+            </ul>
+
+            <div class="highlight-box success">
+                <strong>✅ Cumplimiento normativo:</strong> ERWIX cumple con <strong>RGPD</strong>, <strong>CCPA</strong> y <strong>CalOPPA</strong>.
+            </div>
+
+            <!-- 12. ENLACES A TERCEROS -->
+            <h2>12. Enlaces a sitios web de terceros</h2>
+            <p>
+                Nuestra aplicación puede contener enlaces a sitios web de terceros. Esta política de privacidad no se aplica 
+                a esos sitios. Le recomendamos revisar las políticas de privacidad de cualquier sitio web que visite a través de nuestra aplicación.
+            </p>
+
+            <!-- 13. CAMBIOS -->
+            <h2>13. Cambios en esta política</h2>
+            <p>
+                Podemos actualizar esta política de privacidad periódicamente. Notificaremos cualquier cambio publicando 
+                la nueva política en esta página y actualizando la fecha de "Última actualización". 
+                Le recomendamos revisar esta política regularmente.
+            </p>
+
+            <!-- 14. CONTACTO -->
+            <h2>14. Contacto</h2>
+            <p>Si tiene preguntas, inquietudes o solicitudes sobre esta política de privacidad, puede contactarnos:</p>
+
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="icon">📧</span>
+                    <div class="label">Correo electrónico</div>
+                    <div class="value">info@erwix.com</div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📱</span>
+                    <div class="label">Teléfono</div>
+                    <div class="value">+52 56 4344 4518</div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">🌐</span>
+                    <div class="label">Sitio web</div>
+                    <div class="value"><a href="https://erwix.com">erwix.com</a></div>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📍</span>
+                    <div class="label">Dirección</div>
+                    <div class="value">Monterrey, Nuevo León, México</div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- FOOTER -->
+            <!-- ============================================================ -->
+            <div class="footer">
+                <p>&copy; 2026 ERWIX. Todos los derechos reservados.</p>
+                <div class="footer-links">
+                    <a href="https://erwix.com">Sitio web</a>
+                    <a href="mailto:info@erwix.com">Contacto</a>
+                    <a href="#">Términos de servicio</a>
+                </div>
+                <p style="font-size: 12px; color: #b0bec5; margin-top: 12px;">
+                    Última actualización: 29 de julio de 2026
+                </p>
+            </div>
+
+        </div>
+        <!-- FIN CONTENT -->
+
+    </div>
+    <!-- FIN CONTAINER -->
 
-2. INFORMACIÓN QUE RECOPILAMOS
-2.1 Información que usted nos proporciona directamente
-Cuando utiliza ERWIX, podemos recopilar la siguiente información personal:
-
-Nombre completo y nombre de usuario
-
-Dirección de correo electrónico
-
-Número de teléfono
-
-Dirección postal (para facturación)
-
-Dirección de facturación
-
-Números de tarjeta de débito/crédito (procesados de forma segura a través de Stripe)
-
-2.2 Información recopilada automáticamente
-Cuando utiliza nuestra aplicación, podemos recopilar automáticamente:
-
-Datos de uso: Cómo interactúa con la aplicación, funciones que utiliza, tiempo de uso.
-
-Datos del dispositivo: Modelo de dispositivo, sistema operativo, identificadores únicos del dispositivo.
-
-Datos de ubicación: Podemos recopilar información de ubicación aproximada para proporcionar servicios basados en ubicación.
-
-Datos de rendimiento: Información sobre fallos y rendimiento de la aplicación.
-
-2.3 Información de proveedores de servicios
-Firebase Authentication: Datos de autenticación y verificación de identidad.
-
-Firebase Firestore: Almacenamiento seguro de datos de usuarios y preferencias.
-
-Firebase Cloud Functions: Procesamiento de datos en segundo plano.
-
-Firebase Cloud Storage: Almacenamiento de archivos y documentos.
-
-Firebase Cloud Messaging: Notificaciones push.
-
-Firebase Crashlytics: Informes de errores y rendimiento.
-
-Firebase App Check: Verificación de integridad de la aplicación.
-
-Stripe: Procesamiento de pagos seguros.
-
-3. CÓMO UTILIZAMOS SU INFORMACIÓN
-Utilizamos su información personal para los siguientes propósitos:
-
-3.1 Propósitos principales
-Autenticación y seguridad: Verificar su identidad y garantizar la seguridad de su cuenta.
-
-Gestión de comunidades: Administrar su participación en colonias y comunidades.
-
-Reservaciones: Procesar reservaciones de amenidades y espacios.
-
-Pagos: Procesar pagos y generar recibos a través de Stripe.
-
-Notificaciones: Enviar alertas y recordatorios importantes.
-
-Comunicación: Responder a sus consultas y proporcionar soporte.
-
-3.2 Mejora de la aplicación
-Análisis: Utilizar datos de uso para mejorar la experiencia del usuario.
-
-Solución de problemas: Identificar y corregir errores técnicos.
-
-Personalización: Adaptar el contenido y las funcionalidades a sus preferencias.
-
-4. TECNOLOGÍAS DE SEGUIMIENTO
-Utilizamos las siguientes tecnologías para mejorar su experiencia:
-
-Cookies: Pequeños archivos de texto almacenados en su dispositivo para recordar sus preferencias.
-
-Web beacons: Imágenes invisibles que nos ayudan a entender cómo interactúa con la aplicación.
-
-Almacenamiento local: Datos guardados en su dispositivo para un rendimiento más rápido.
-
-Sesiones: Gestión de su estado de inicio de sesión durante el uso de la aplicación.
-
-5. PUBLICIDAD Y RETARGETING
-ERWIX puede mostrar anuncios y utilizar técnicas de retargeting para:
-
-Mostrar anuncios relevantes basados en sus intereses.
-
-Medir la efectividad de nuestras campañas publicitarias.
-
-Limitar la frecuencia de visualización de anuncios.
-
-Nota importante: ERWIX no utiliza píxel de Facebook en su aplicación.
-
-6. ACCESO A PERMISOS DEL DISPOSITIVO
-Para proporcionar todas sus funcionalidades, ERWIX puede solicitar acceso a:
-
-Cámara: Para escaneo de códigos QR y subir fotos de perfil.
-
-Galería/Fotos: Para seleccionar imágenes de perfil y documentos.
-
-Contactos: Para facilitar la comunicación con otros usuarios (opcional).
-
-Puede revocar estos permisos en cualquier momento desde la configuración de su dispositivo.
-
-7. USUARIOS MENORES DE 13 AÑOS
-ERWIX está disponible para usuarios menores de 13 años bajo la supervisión de un padre o tutor. No recopilamos intencionalmente información personal de niños sin el consentimiento verificable de los padres. Si descubrimos que hemos recopilado información de un niño sin consentimiento, eliminaremos esa información de inmediato.
-
-8. CÓMO COMPARTIMOS SU INFORMACIÓN
-No vendemos, alquilamos ni compartimos su información personal con terceros, excepto en los siguientes casos:
-
-8.1 Proveedores de servicios
-Compartimos datos con proveedores de servicios de confianza que nos ayudan a operar nuestra aplicación:
-
-Stripe: Para procesar pagos de forma segura.
-
-Firebase/Google: Para servicios de infraestructura y análisis.
-
-8.2 Requisitos legales
-Podemos divulgar su información si:
-
-La ley lo exige.
-
-Es necesario para proteger nuestros derechos legales.
-
-Es necesario para prevenir fraudes o actividades ilegales.
-
-9. SEGURIDAD DE DATOS
-Implementamos medidas de seguridad técnicas y organizativas para proteger su información:
-
-Cifrado: Todos los datos se transmiten mediante HTTPS.
-
-Almacenamiento seguro: Los datos se almacenan en servidores seguros con acceso restringido.
-
-Autenticación: Verificación de identidad para acceder a la información.
-
-Monitoreo: Supervisión continua de amenazas de seguridad.
-
-10. RETENCIÓN DE DATOS
-Conservamos su información personal durante el tiempo necesario para:
-
-Proporcionar los servicios solicitados.
-
-Cumplir con obligaciones legales y fiscales.
-
-Resolver disputas y hacer cumplir nuestros acuerdos.
-
-Si desea eliminar su cuenta y sus datos, puede solicitarlo a través de la aplicación o contactándonos.
-
-11. SUS DERECHOS DE PRIVACIDAD
-11.1 Derechos según el RGPD (Usuarios en la UE)
-Usted tiene derecho a:
-
-Acceso: Solicitar una copia de sus datos personales.
-
-Rectificación: Corregir datos inexactos.
-
-Eliminación: Solicitar la eliminación de sus datos ("derecho al olvido").
-
-Restricción: Limitar el procesamiento de sus datos.
-
-Portabilidad: Recibir sus datos en un formato portátil.
-
-Oposición: Oponerse al procesamiento de sus datos.
-
-Retirar consentimiento: Retirar su consentimiento en cualquier momento.
-
-11.2 Derechos según la CCPA (Usuarios en California)
-Los residentes de California tienen derecho a:
-
-Conocer: Solicitar información sobre los datos recopilados.
-
-Eliminar: Solicitar la eliminación de sus datos personales.
-
-No discriminación: No ser discriminados por ejercer sus derechos.
-
-11.3 Derechos según CalOPPA
-Cumplimos con los requisitos de CalOPPA al:
-
-Indicar claramente qué información recopilamos.
-
-Proporcionar información de contacto.
-
-Responder a solicitudes de privacidad de manera oportuna.
-
-12. ENLACES A SITIOS WEB DE TERCEROS
-Nuestra aplicación puede contener enlaces a sitios web de terceros. Esta política de privacidad no se aplica a esos sitios. Le recomendamos revisar las políticas de privacidad de cualquier sitio web que visite a través de nuestra aplicación.
-
-13. CAMBIOS EN ESTA POLÍTICA
-Podemos actualizar esta política de privacidad periódicamente. Notificaremos cualquier cambio publicando la nueva política en esta página y actualizando la fecha de "Última actualización". Le recomendamos revisar esta política regularmente.
-
-14. CONTACTO
-Si tiene preguntas, inquietudes o solicitudes sobre esta política de privacidad, puede contactarnos:
-
-Correo electrónico: info@erwix.com
-
-Teléfono: +52 56 4344 4518
-
-Sitio web: https://erwix.com
-
-Dirección: Monterrey, Nuevo León, México
 </body>
 </html>
